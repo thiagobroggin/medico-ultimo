@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cores do WhatsApp */
+    --whatsapp: 142 70% 49%;  /* #25D366 */
+    --whatsapp-hover: 142 70% 45%;
+
+    /* Cores base do sistema */
+    --background: 220 20% 98%;
+    --foreground: 224 71.4% 4.1%;
+
+    /* Nova Paleta Minimalista Médico-Moderna */
+    --primary: 210 79% 28%;    /* #0F4C81 Azul institucional moderno */
+    --secondary: 209 61% 92%;  /* #E9F1F7 Azul claro para fundos leves */
+    --accent: var(--whatsapp);  /* Usando verde do WhatsApp como accent */
+    --base: 220 20% 98%;      /* #F9FAFB Branco neutro */
+    --text: 224 24% 17%;      /* #1F2937 Grafite */
+
+    /* Configurações do shadcn/ui */
+    --card: var(--base);
+    --card-foreground: var(--text);
+    --popover: var(--base);
+    --popover-foreground: var(--text);
+    --primary-foreground: var(--base);
+    --secondary-foreground: var(--primary);
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 10% 40%;
+    --accent-foreground: white;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: var(--base);
+    --border: 220 13% 88%;
+    --input: 220 13% 91%;
+    --ring: var(--primary);
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --primary: 210 90% 60%;
+    --secondary: 215 28% 17%;
+    --accent: var(--whatsapp);
+    --base: 220 15% 10%;
+    --text: 210 20% 90%;
+    --card: var(--base);
+    --card-foreground: var(--text);
+    --popover: var(--base);
+    --popover-foreground: var(--text);
+    --primary-foreground: 224 71.4% 4.1%;
+    --secondary-foreground: var(--primary);
+    --muted: 215 20% 20%;
+    --muted-foreground: 215 15% 60%;
+    --accent-foreground: white;
+    --destructive: 0 63% 40%;
+    --destructive-foreground: var(--base);
+    --border: 215 20% 25%;
+    --input: 215 20% 22%;
+    --ring: var(--primary);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  /* Estilos base */
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Hierarquia de headings para SEO */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-primary;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl font-bold text-primary;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold text-primary;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl font-semibold text-primary;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl font-medium text-primary;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg font-medium text-primary;
+  }
+
+  /* Melhorias de acessibilidade */
+  :focus {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Skip to main content - acessibilidade */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-base focus:text-primary;
+  }
+}
+
+/* Melhorias de responsividade */
+@layer utilities {
+  .container {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Animações suaves */
+@layer components {
+  .transition-custom {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full hover:bg-accent transition-colors;
+}
+
+/* Loading state para imagens */
+.image-loading {
+  @apply animate-pulse bg-secondary;
+}
+
+/* Suporte para lazy loading de imagens */
+img.lazy {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+img.lazy.loaded {
+  @apply opacity-100;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:container {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:container {
+    @apply px-8;
+  }
+}
+  
